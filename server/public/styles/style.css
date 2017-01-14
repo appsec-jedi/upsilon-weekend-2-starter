@@ -1,0 +1,9 @@
+.people {
+  display: inline-block;
+  background-color: #2642bd;
+  width: 20px;
+  height: 20px;
+}
+button {
+  margin-bottom: 10px;
+}
