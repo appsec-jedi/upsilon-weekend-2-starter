@@ -27,11 +27,32 @@ $(document).ready(function(){
           }
         });
       }
-      $('#nextButton').on('click', function() {
-        console.log("Next button was clicked");
-        nextStudent(currentStudent);
-      })
-      function nextStudent(currentStudent) {
+  $('#nextButton').on('click', function() {
+    console.log("Next button was clicked");
+    nextStudent(currentStudent);
+    })
+    function nextStudent(currentStudent) {
+      $.ajax({
+        type: "GET",
+        url: "/data",
+        success: function(data){
+          // console.log("GET /data returns", data);
+          console.log("previous student is", currentStudent);
+          $('#stage').fadeOut('slow');
+          $('#stage').empty();
+          currentStudent = currentStudent + 1;
+          displayedStudent = data[currentStudent];
+          console.log("new student is", currentStudent)
+          $('#stage').fadeIn('slow');
+          appendDom(displayedStudent);
+          }
+        });
+      }
+  $('#previousButton').on('click', function() {
+    console.log("Previous button was clicked");
+    previousStudent(currentStudent);
+    })
+      function previousStudent(currentStudent) {
         $.ajax({
           type: "GET",
           url: "/data",
@@ -40,35 +61,14 @@ $(document).ready(function(){
             console.log("previous student is", currentStudent);
             $('#stage').fadeOut('slow');
             $('#stage').empty();
-            currentStudent = currentStudent + 1;
+            currentStudent = currentStudent - 1;
             displayedStudent = data[currentStudent];
-            console.log("new student is", currentStudent)
+            console.log("new student is", currentStudent);
             $('#stage').fadeIn('slow');
             appendDom(displayedStudent);
             }
           });
         }
-        $('#previousButton').on('click', function() {
-          console.log("Previous button was clicked");
-          previousStudent(currentStudent);
-        })
-        function previousStudent(currentStudent) {
-          $.ajax({
-            type: "GET",
-            url: "/data",
-            success: function(data){
-              // console.log("GET /data returns", data);
-              console.log("previous student is", currentStudent);
-              $('#stage').fadeOut('slow');
-              $('#stage').empty();
-              currentStudent = currentStudent - 1;
-              displayedStudent = data[currentStudent];
-              console.log("new student is", currentStudent);
-              $('#stage').fadeIn('slow');
-              appendDom(displayedStudent);
-              }
-            });
-          }
 
     });
 });
