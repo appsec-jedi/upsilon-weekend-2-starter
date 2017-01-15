@@ -2,15 +2,19 @@ var displayedStudent = 0;
 var currentStudent = 0;
 var time = 10;
 
-
-
 $(document).ready(function(){
-  var timer = setInterval(function() {
+  setInterval(function() {
 
     if(time==0){
+      if (currentStudent<16) {
       currentStudent = Number(currentStudent)+ 1;
       showStudent(currentStudent);
       time = 11
+    } else {
+      currentStudent = 0;
+      showStudent(currentStudent);
+      time = 11
+    }
     }
     time--;
     console.log((time));
