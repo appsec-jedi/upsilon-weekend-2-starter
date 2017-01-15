@@ -1,7 +1,21 @@
 var displayedStudent = 0;
 var currentStudent = 0;
+var time = 10;
+
+
 
 $(document).ready(function(){
+  var timer = setInterval(function() {
+
+    if(time==0){
+      currentStudent = Number(currentStudent)+ 1;
+      showStudent(currentStudent);
+      time = 11
+    }
+    time--;
+    console.log((time));
+  }, 1000);
+
   $.ajax({
     type: "GET",
     url: "/data",
@@ -13,12 +27,13 @@ $(document).ready(function(){
   $('.people').on('click', function() {
     currentStudent = $(this).attr('id');
     console.log(currentStudent);
-
+    time = 10;
     showStudent(currentStudent);
   });
 
   $('#nextButton').on('click', function() {
     console.log("Next button was clicked");
+    time = 10;
     $('highlighted').removeClass();
     if (currentStudent<16) {
       currentStudent = Number(currentStudent) +1;
@@ -27,12 +42,11 @@ $(document).ready(function(){
       currentStudent = 0;
       showStudent(currentStudent);
     }
-
-
   });
 
   $('#previousButton').on('click', function() {
     console.log("Previous button was clicked");
+    time = 10;
     $('highlighted').removeClass();
     if (currentStudent>0) {
       currentStudent = Number(currentStudent) -1;
@@ -50,12 +64,12 @@ $(document).ready(function(){
         success: function(data){
           $('.highlighted').removeClass('highlighted');
           console.log("GET /data returns", data);
-          // $('#stage').fadeOut('slow');
+          $('#stage').fadeOut('slow');
           $('#stage').empty();
           displayedStudent = data[currentStudent];
           console.log(displayedStudent);
-          // $('#stage').fadeIn('slow');
-          appendDom(displayedStudent);
+          setTimeout(appendDom(displayedStudent),5000);
+          $('#stage').fadeIn('slow');
           $('#'+currentStudent).addClass('highlighted');
           }
         });
@@ -70,57 +84,3 @@ $(document).ready(function(){
       };
 
 });
-
-// nextStudent(currentStudent);
-
-// function nextStudent(currentStudent) {
-//   $.ajax({
-//     type: "GET",
-//     url: "/data",
-//     success: function(data){
-//       $('.highlighted').removeClass('highlighted');
-//       if(currentStudent<16){
-//         console.log(currentStudent);
-//         currentStudent = Number(currentStudent) +1;
-//         console.log(currentStudent);
-//         $('#stage').empty();
-//         displayedStudent = data[currentStudent];
-//         appendDom(displayedStudent);
-//         $('#'+currentStudent).addClass('highlighted');
-//       } else {
-//         currentStudent=0;
-//         $('#stage').empty();
-//         displayedStudent = data[currentStudent];
-//         appendDom(displayedStudent);
-//         $('#'+currentStudent).addClass('highlighted');
-//       };
-//     }
-//   });
-// }
-
-// prevStudent(currentStudent);
-//
-// function prevStudent(currentStudent) {
-//   $.ajax({
-//     type: "GET",
-//     url: "/data",
-//     success: function(data){
-//       $('.highlighted').removeClass('highlighted');
-//       if(currentStudent>0){
-//         console.log(currentStudent);
-//         currentStudent = Number(currentStudent) - 1;
-//         console.log(currentStudent);
-//         $('#stage').empty();
-//         displayedStudent = data[currentStudent];
-//         appendDom(displayedStudent);
-//         $('#'+currentStudent).addClass('highlighted');
-//       } else {
-//         currentStudent=16;
-//         $('#stage').empty();
-//         displayedStudent = data[currentStudent];
-//         appendDom(displayedStudent);
-//         $('#'+currentStudent).addClass('highlighted');
-//       };
-//     }
-//   });
-// }
