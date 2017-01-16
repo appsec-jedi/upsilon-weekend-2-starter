@@ -1,10 +1,15 @@
+html{
+  background-color: #0000ff;
+  background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
+}
+
 body {
   text-align: center;
 }
 
 .people {
   display: inline-block;
-  background-color: #2642bd;
+  background-color: #000000;
   width: 20px;
   height: 20px;
 }
@@ -15,9 +20,15 @@ button {
 .highlighted {
   background-color: red;
 }
+#stagingArea {
+  display: inline-block;
+  text-align: center;
+  width: 700px;
+  height: 200px;
+}
 #stage {
   display: inline-block;
   text-align: center;
   width: 500px;
-  height: 150px;
+  height: 175px;
 }

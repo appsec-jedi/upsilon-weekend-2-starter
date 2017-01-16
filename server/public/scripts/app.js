@@ -81,9 +81,9 @@ $(document).ready(function(){
       }
     function appendDom(data){
       var $studentDiv = $('<div class="student"></div>');
-      $studentDiv.append('<h2>' + data.name + '</h2>');
-      $studentDiv.append('<p>' + data.githubUserName + '</p>');
-      $studentDiv.append('<p>' + data.shoutout + '</p>');
+      $studentDiv.append('<h1>' + data.name + '</h1>');
+      $studentDiv.append('<h2>' + data.githubUserName + '</h2>');
+      $studentDiv.append('<h2>' + data.shoutout + '</h2>');
 
       $('#stage').append($studentDiv);
       };
