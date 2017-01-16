@@ -13,6 +13,9 @@ body {
   width: 20px;
   height: 20px;
 }
+.people:hover {
+  background-color: #676767;
+}
 button {
   margin-bottom: 10px;
 }
