@@ -70,21 +70,22 @@ $(document).ready(function(){
           console.log("GET /data returns", data);
           $('#stage').fadeOut('slow');
           $('#stage').empty();
+          $('#stage').hide();
           displayedStudent = data[currentStudent];
           console.log(displayedStudent);
-          setTimeout(appendDom(displayedStudent),5000);
+          appendDom(displayedStudent);
           $('#stage').fadeIn('slow');
           $('#'+currentStudent).addClass('highlighted');
           }
         });
       }
-      function appendDom(data){
-        var $studentDiv = $('<div class="student"></div>');
-        $studentDiv.append('<h2>' + data.name + '</h2>');
-        $studentDiv.append('<p>' + data.githubUserName + '</p>');
-        $studentDiv.append('<p>' + data.shoutout + '</p>');
+    function appendDom(data){
+      var $studentDiv = $('<div class="student"></div>');
+      $studentDiv.append('<h2>' + data.name + '</h2>');
+      $studentDiv.append('<p>' + data.githubUserName + '</p>');
+      $studentDiv.append('<p>' + data.shoutout + '</p>');
 
-        $('#stage').append($studentDiv);
+      $('#stage').append($studentDiv);
       };
 
 });

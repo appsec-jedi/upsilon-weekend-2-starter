@@ -1,6 +1,4 @@
 body {
-  width: 500;
-  margin: auto;
   text-align: center;
 }
 
@@ -16,4 +14,10 @@ button {
 
 .highlighted {
   background-color: red;
+}
+#stage {
+  display: inline-block;
+  text-align: center;
+  width: 500px;
+  height: 150px;
 }
